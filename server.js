@@ -10,7 +10,7 @@ const helmet = require('helmet');
 const server = express();
 
 // allowing express to parse json
-server.use(server.json());
+server.use(express.json());
 server.use(helmet());
 
 // initial route to check server

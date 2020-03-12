@@ -4,7 +4,8 @@ const express = require('express');
 const helmet = require('helmet');
 
 // import routers
-
+const showsRouter = require('./data/routers/showsRouter.js');
+const charactersRouter = require('./data/routers/charactersRouter.js');
 
 // creates the server instance
 const server = express();
@@ -20,6 +21,7 @@ server.get('/', (req, res) => {
 
 // set the routers
 // tells the server to use these routers
-
+server.use('/api/shows', showsRouter);
+server.use('/api/characters', charactersRouter);
 
 module.exports = server;

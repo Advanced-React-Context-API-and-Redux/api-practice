@@ -1,11 +1,11 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable('shows', function(show){
-        show.increments();
+    return knex.schema.createTable('shows', function(shows){
+        shows.increments();
         
-        show.string('name', 128).notNullable();
-        show.text('description').notNullable();
-        show.boolean('watched').defaultTo(false);
+        shows.string('name', 128).notNullable();
+        shows.text('description').notNullable();
+        shows.boolean('watched').defaultTo(false);
     })
 };
 

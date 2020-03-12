@@ -6,7 +6,7 @@ module.exports = {
 };
 
 function intToBoolean(int) {
-    return int === 1 ? true: false;
+    return int === 1 ? true : false;
 };
 
 function booleanToInt(bool) {
@@ -16,12 +16,12 @@ function booleanToInt(bool) {
 function showToBody(show){
     const result = {
         ...show,
-        completed: intToBoolean(show.watched)
+        watched: intToBoolean(show.watched)
     };
 
     if(show.characters) {
-        result.chracters = show.characters.map(character => ({
-            ...chracter,
+        result.characters = show.characters.map(character => ({
+            ...character,
             like: intToBoolean(character.like)
         }));
     };

@@ -9,33 +9,8 @@ module.exports = {
     remove,
 };
 
-function getAll(id) {
-    let query = DB("characters as c");
-
-    if(id) {
-        query.where("c.id", id).first();
-
-        const promises = [query]; // [ characters ]
-
-        return Promise.all(promises)
-            .then(function(results) {
-                let [ characters] = results;
-
-            if(characters) {
-
-                return mappers.characterToBody(characters);
-            } else {
-                return null;
-            }
-            })
-            .catch(() => {
-                res.status(500).json({ message: "There's a problem with the promises in charactersModel.js"})
-            });
-    } else {
-        return query.then(characters => {
-            return characters.map(character => mappers.characterToBody(character));
-        });
-    };
+function getAll() {
+    return DB('characters');
 }
 
 function get(id) {

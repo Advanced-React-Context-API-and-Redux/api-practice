@@ -4,16 +4,17 @@ const router = require('express').Router();
 const charactersDB = require('../helpers/charactersModel.js');
 
 // GET all the characters
-// router.get('/', (req, res) => {
-    
-//     charactersDB.getAll()
-//         .then(() => {
-//             res.status(200).json(res.data)
-//         })
-//         .catch(() => {
-//             res.status(500).json({ errorMessage: 'There was an error retrieving the character!'})
-//         })
-// })
+router.get('/', (req, res) => {
+    const characters = res.query
+
+    charactersDB.getAll(characters)
+        .then(result => {
+            res.status(200).json(result)
+        })
+        .catch(() => {
+            res.status(500).json({ errorMessage: 'There was an error retrieving the characters!'})
+        })
+})
 
 // GET characters by :id
 router.get('/:id', (req, res) => {
